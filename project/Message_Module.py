@@ -35,12 +35,10 @@ class MessageModule:
             print(exception)
             return None
     
-    def delete_messages(queue_client, messages):
+    def delete_messages(queue_client, message):
         try:
-            for msg_batch in messages.by_page():
-                    for msg in msg_batch:
-                        print(f"Deleting: {msg.content}")
-                        queue_client.delete_message(msg)
+            print(f"Deleting: {message}")
+            queue_client.delete_message(message)
             return True
         except Exception as exception:
             print(exception)
